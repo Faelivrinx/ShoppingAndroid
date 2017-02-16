@@ -1,5 +1,9 @@
 package com.example.dominik.prontoshop.model;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Transaction
@@ -96,12 +100,22 @@ public class Transaction
         this.modifiedDate = modifiedDate;
     }
 
-    public List<LineItem> getLineItems() {
+    public List<LineItem> getLineItems()
+    {
+        Gson gson = new Gson();
+        String serializedLineItems = getJsonLineItem();
+        List<LineItem> result = gson.<ArrayList<LineItem>>fromJson(
+                serializedLineItems,
+                new TypeToken<ArrayList<LineItem>>(){}.getType()
+        );
         return lineItems;
     }
 
-    public void setLineItems(List<LineItem> lineItems) {
-        this.lineItems = lineItems;
+    public void setLineItems(List<LineItem> lineItems)
+    {
+        Gson gson = new Gson();
+        String lineItemJson = gson.toJson(lineItems);
+        this.setJsonLineItem(lineItemJson);
     }
 
     public String getJsonLineItem() {
