@@ -33,6 +33,6 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         app:fabSize="normal"
-        android:elevation="6dp"
-        android:src="@mipmap/ic_action_add"/>
+        android:elevation="8dp"
+        />
 </RelativeLayout>
