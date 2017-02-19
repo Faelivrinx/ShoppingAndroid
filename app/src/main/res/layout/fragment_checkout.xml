@@ -90,7 +90,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="right"
-                android:paddingRight="5dp"
+                android:paddingRight="@dimen/margin_padding_tiny"
                 android:text="@string/label_zero_dollar"/>
 
 
@@ -116,7 +116,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="right"
-                android:paddingRight="5dp"
+                android:paddingRight="@dimen/margin_padding_tiny"
                 android:text="@string/label_zero_dollar"/>
 
 
@@ -129,7 +129,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:layout_margin="5dp"
+        android:layout_margin="@dimen/margin_padding_tiny"
         android:orientation="horizontal">
 
         <RadioButton
@@ -163,8 +163,8 @@
         style="style/ButtonBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginBottom="@dimen/margin_padding_tiny"
+        android:layout_marginTop="@dimen/margin_padding_tiny"
         android:orientation="horizontal">
 
         <Button

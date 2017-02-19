@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="4dp"
+    android:padding="@dimen/margin_padding_tiny"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.example.dominik.prontoshop.ui.customerlist.CustomerListFragment">
 
@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/colorPrimary"
         android:text="@string/no_product_found"
-        android:padding="15dp"
+        android:padding="@dimen/margin_padding_normal"
         android:textStyle="italic"
         android:gravity="center"
         android:visibility="gone"
