@@ -25,7 +25,7 @@
             android:id="@+id/fragment_checkout_list_emptyText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/primary"
             android:text="@string/no_product_found"
             android:padding="15dp"
             android:textStyle="italic"

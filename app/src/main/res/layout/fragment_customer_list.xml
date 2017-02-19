@@ -19,7 +19,7 @@
         android:id="@+id/fragment_customer_list_emptyText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/primary"
         android:text="@string/no_product_found"
         android:padding="@dimen/margin_padding_normal"
         android:textStyle="italic"
