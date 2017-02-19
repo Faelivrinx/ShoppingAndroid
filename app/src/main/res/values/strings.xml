@@ -14,4 +14,7 @@
     <string name="payment_type_paypal">paypal</string>
     <string name="clear_text">Clear</string>
     <string name="checkout_text">Checkout</string>
+    <string name="product_name">Product Name</string>
+    <string name="category">Category</string>
+    <string name="product_description">Product Description</string>
 </resources>
