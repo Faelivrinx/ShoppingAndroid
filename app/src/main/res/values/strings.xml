@@ -17,4 +17,6 @@
     <string name="product_name">Product Name</string>
     <string name="category">Category</string>
     <string name="product_description">Product Description</string>
+    <string name="qty">qty</string>
+    <string name="delete">delete</string>
 </resources>
