@@ -17,8 +17,8 @@
 
     <TextView
         android:id="@+id/fragment_customer_list_emptyText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:textColor="@color/primary"
         android:text="@string/no_product_found"
         android:padding="@dimen/margin_padding_normal"

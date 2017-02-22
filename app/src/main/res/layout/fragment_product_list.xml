@@ -15,14 +15,13 @@
 
     <TextView
         android:id="@+id/fragment_product_list_emptyText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:textColor="@color/primary"
         android:text="@string/no_product_found"
         android:padding="15dp"
-        android:textStyle="italic"
         android:gravity="center"
-        android:visibility="gone"
+        android:textStyle="italic"
         android:fontFamily="sans-serif-condensed"/>
 
     <android.support.design.widget.FloatingActionButton
