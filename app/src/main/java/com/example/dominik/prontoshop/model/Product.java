@@ -1,6 +1,8 @@
 package com.example.dominik.prontoshop.model;
 
 
+import java.text.NumberFormat;
+
 public class Product
 {
     private long id;
@@ -14,6 +16,7 @@ public class Product
     private String categoryName;
     private long dateAdded;
     private long dateOfLastTransaction;
+
 
     public Product(){}
 
@@ -119,4 +122,6 @@ public class Product
     public void setDateOfLastTransaction(long dateOfLastTransaction) {
         this.dateOfLastTransaction = dateOfLastTransaction;
     }
+
+
 }

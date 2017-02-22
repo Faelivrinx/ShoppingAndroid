@@ -42,6 +42,12 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/product_image_height">
 
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            />
+
         <ImageView
             android:id="@+id/list_product_image"
             android:layout_width="match_parent"
@@ -78,6 +84,33 @@
             android:minWidth="64dp"
             android:padding="@dimen/margin_padding_small"
             android:layout_margin="@dimen/margin_padding_small"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:orientation="vertical"
+            android:layout_alignBottom="@+id/list_product_addCartButton"
+            android:layout_toLeftOf="@+id/list_product_productPrice"
+            android:layout_toStartOf="@+id/list_product_productPrice">
+
+            <TextView
+                android:id="@+id/list_product_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:maxLines="2"
+                android:text=""
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="12sp"/>
+
+
+        </LinearLayout>
 
 
     </RelativeLayout>
