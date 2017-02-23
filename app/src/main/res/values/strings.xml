@@ -20,4 +20,5 @@
     <string name="qty">qty</string>
     <string name="delete">delete</string>
     <string name="dialog_title">dialog_title</string>
+    <string name="customer_name">Customer Name</string>
 </resources>
