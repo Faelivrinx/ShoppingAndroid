@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.dominik.prontoshop.R;
+import com.example.dominik.prontoshop.ui.checkout.CheckoutFragment;
 import com.example.dominik.prontoshop.ui.customerlist.CustomerListFragment;
 import com.example.dominik.prontoshop.ui.productlist.ProductListFragment;
 
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        openFragment(new CustomerListFragment(), "Product List");
+        openFragment(new CheckoutFragment(), "Checkout List");
 
     }
 

@@ -23,8 +23,8 @@
 
         <TextView
             android:id="@+id/fragment_checkout_list_emptyText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:textColor="@color/primary"
             android:text="@string/no_product_found"
             android:padding="15dp"
@@ -48,9 +48,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:gravity="center"
             >
 
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -58,7 +59,7 @@
                 android:text="@string/label_sub_total"/>
 
 
-            <EditText
+            <TextView
                 android:id="@+id/fragment_checkout_list_textView_sub_total"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -74,9 +75,10 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:gravity="center">
 
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -84,7 +86,7 @@
                 android:text="@string/label_sub_tax"/>
 
 
-            <EditText
+            <TextView
                 android:id="@+id/fragment_checkout_list_textView_tax"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -100,17 +102,20 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:gravity="center"
+            >
 
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="start"
-                android:text="@string/label_total"/>
+                android:text="@string/label_total"
+                />
 
 
-            <EditText
+            <TextView
                 android:id="@+id/fragment_checkout_list_textView_total"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -130,7 +135,9 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_margin="@dimen/margin_padding_tiny"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        >
 
         <RadioButton
             android:id="@+id/fragment_checkout_buttonCash"
@@ -138,7 +145,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:checked="true"
-            android:text="@string/payment_type_cash"/>
+            android:text="@string/payment_type_cash"
+            />
 
         <RadioButton
             android:id="@+id/fragment_checkout_buttonCard"
