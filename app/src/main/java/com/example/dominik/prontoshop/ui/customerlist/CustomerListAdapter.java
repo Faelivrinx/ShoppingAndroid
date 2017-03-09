@@ -21,10 +21,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class CustomerListAdapter extends RecyclerView.Adapter<CustomerListAdapter.ViewHolder>{
+public class CustomerListAdapter extends RecyclerView.Adapter<CustomerListAdapter.ViewHolder> {
 
     private List<Customer> mCustomers;
-    private  Context mContext;
+    private Context mContext;
     private boolean shouldHightlightSelectedCustomer = false;
     private int selectedPosition = 0;
     private OnCustomerSelectedListener mListener;
@@ -57,15 +57,13 @@ public class CustomerListAdapter extends RecyclerView.Adapter<CustomerListAdapte
                 .placeholder(R.drawable.profile_icon)
                 .into(holder.customerHeadShot);
 
-        if(shouldHightlightSelectedCustomer) {
-            if(selectedPosition == position){
+        if (shouldHightlightSelectedCustomer) {
+            if (selectedPosition == position) {
                 holder.itemView.setBackgroundColor(ContextCompat.getColor(mContext, R.color.primary_light));
-            }
-            else {
+            } else {
                 holder.itemView.setBackgroundColor(Color.TRANSPARENT);
             }
-        }
-        else {
+        } else {
             holder.itemView.setBackgroundColor(Color.TRANSPARENT);
         }
     }
@@ -108,7 +106,7 @@ public class CustomerListAdapter extends RecyclerView.Adapter<CustomerListAdapte
 
         @Override
         public boolean onLongClick(View view) {
-           Customer selectedCustomer = mCustomers.get(selectedPosition);
+            Customer selectedCustomer = mCustomers.get(selectedPosition);
             mListener.onLongClickedCustomer(selectedCustomer);
             return true;
         }
