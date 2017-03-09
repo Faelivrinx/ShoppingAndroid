@@ -7,6 +7,7 @@ import com.example.dominik.prontoshop.model.Customer;
 import com.example.dominik.prontoshop.model.LineItem;
 import com.example.dominik.prontoshop.util.Constants;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +34,26 @@ public class ShoppingCart implements ShoppingCartContract {
         Gson gson = new Gson();
 
         //check if there are item saved to the Shared Preferences
+        if(sharedPreferences.getBoolean(Constants.OPEN_CART_EXISTS, false)){
+
+            String serializedItems = sharedPreferences.getString(Constants.SERIALIZED_CART_ITEMS, "");
+            if(DEBUG){
+                Log.d(LOG_TAG, "Serialized Cart Items: " + serializedItems);
+            }
+            String serializedCustomer = sharedPreferences.getString(Constants.SERIALIZED_CUSTOMER, "");
+            if(DEBUG){
+                Log.d(LOG_TAG, "Serialized Customer: " + serializedCustomer);
+            }
+
+            if(serializedItems.equals("")){
+                shoppingCart = gson.<ArrayList<LineItem>>fromJson(serializedItems,
+                                    new TypeToken<ArrayList<LineItem>>(){}.getType());
+            }
+
+            if(serializedCustomer.equals("")){
+                selectedCustomer = gson.fromJson(serializedCustomer, Customer.class);
+            }
+        }
 
     }
 
@@ -57,17 +78,32 @@ public class ShoppingCart implements ShoppingCartContract {
 
     @Override
     public void addItemToCart(LineItem item) {
+        boolean isItemInCart = false;
+        int itemPosition = 0;
 
+        for(LineItem tempItem: shoppingCart){
+                if(tempItem.getId() == item.getId()){
+                    itemPosition = shoppingCart.indexOf(tempItem);
+                    isItemInCart = true;
+                    LineItem selectedItem = shoppingCart.get(itemPosition);
+                    selectedItem.setQuantity(tempItem.getQuantity() + item.getQuantity());
+                    shoppingCart.set(itemPosition, selectedItem);
+                    break;
+                }
+        }
+        if(!isItemInCart){
+            shoppingCart.add(item);
+        }
     }
 
     @Override
     public void removeItemFromCart(LineItem item) {
-
+        shoppingCart.remove(item);
     }
 
     @Override
     public void clearAllItemsFromCart() {
-
+        shoppingCart.clear();
     }
 
     @Override
@@ -77,21 +113,36 @@ public class ShoppingCart implements ShoppingCartContract {
 
     @Override
     public void setCustomer(Customer customer) {
-
+        selectedCustomer = customer;
     }
 
     @Override
     public void updateItemQty(LineItem item, int qty) {
+        boolean itemAlreadyInCart = false;
+        int itemPosition = 0;
 
+        for(LineItem tempItem: shoppingCart){
+            if(tempItem.getId() == item.getId()){
+                itemPosition = shoppingCart.indexOf(tempItem);
+                LineItem itemInCart = shoppingCart.get(itemPosition);
+                itemInCart.setQuantity(qty);
+                shoppingCart.set(itemPosition, itemInCart);
+            }
+        }
+
+        if(!itemAlreadyInCart){
+            item.setQuantity(qty);
+            shoppingCart.add(item);
+        }
     }
 
     @Override
     public Customer getSelectedCustomer() {
-        return null;
+        return selectedCustomer;
     }
 
     @Override
     public void completeCheckout() {
-
+        shoppingCart.clear();
     }
 }
