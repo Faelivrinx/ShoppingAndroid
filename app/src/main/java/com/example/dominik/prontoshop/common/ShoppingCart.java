@@ -3,14 +3,18 @@ package com.example.dominik.prontoshop.common;
 import android.content.SharedPreferences;
 import android.util.Log;
 
+import com.example.dominik.prontoshop.core.ProntoShopApplication;
 import com.example.dominik.prontoshop.model.Customer;
 import com.example.dominik.prontoshop.model.LineItem;
 import com.example.dominik.prontoshop.util.Constants;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.squareup.otto.Bus;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.inject.Inject;
 
 public class ShoppingCart implements ShoppingCartContract {
 
@@ -22,8 +26,12 @@ public class ShoppingCart implements ShoppingCartContract {
     private static final String LOG_TAG = ShoppingCart.class.getSimpleName();
     private static boolean DEBUG = true;
 
+    @Inject
+    Bus bus;
+
     public ShoppingCart(SharedPreferences sharedPreferences) {
         this.sharedPreferences = sharedPreferences;
+        ProntoShopApplication.getInstance().getAppComponent().inject(this);
         initShoppingCart();
     }
 

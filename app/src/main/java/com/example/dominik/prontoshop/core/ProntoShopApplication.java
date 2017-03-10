@@ -10,7 +10,7 @@ import com.example.dominik.prontoshop.core.dagger.DaggerAppComponent;
  * Created by Dominik on 2017-03-09.
  */
 
-public class ProntoShopApplication extends Application{
+public class ProntoShopApplication extends Application {
     private static AppComponent appComponent;
     private static ProntoShopApplication instance = new ProntoShopApplication();
 
@@ -20,11 +20,17 @@ public class ProntoShopApplication extends Application{
         getAppComponent();
     }
 
-    private void getAppComponent() {
-        if(appComponent == null){
+    public static ProntoShopApplication getInstance() {
+        return instance;
+    }
+
+
+    public AppComponent getAppComponent() {
+        if (appComponent == null) {
             appComponent = DaggerAppComponent.builder()
                     .appModule(new AppModule(this))
                     .build();
         }
+        return appComponent;
     }
 }
