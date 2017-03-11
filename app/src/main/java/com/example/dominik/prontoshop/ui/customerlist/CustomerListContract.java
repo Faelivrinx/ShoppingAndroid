@@ -1,5 +1,6 @@
 package com.example.dominik.prontoshop.ui.customerlist;
 
+import com.example.dominik.prontoshop.core.listeners.OnDatabaseOperationCompleteListener;
 import com.example.dominik.prontoshop.model.Customer;
 import com.example.dominik.prontoshop.model.Product;
 
@@ -31,7 +32,7 @@ public interface CustomerListContract {
 
         Customer getCustomer(long id);
 
-        void onCustomerSelected();
+        void onCustomerSelected(Customer customer);
 
         void onAddCustomerButtonClicked(Customer customer);
 
@@ -54,10 +55,10 @@ public interface CustomerListContract {
 
         Customer getCustomer(long id);
 
-        void addCustomer(Customer customer);
+        void addCustomer(Customer customer, OnDatabaseOperationCompleteListener listener);
 
-        void deleteCustomer(Customer customer);
+        void deleteCustomer(Customer customer, OnDatabaseOperationCompleteListener listener);
 
-        void updateCustomer(Customer customer);
+        void updateCustomer(Customer customer, OnDatabaseOperationCompleteListener listener);
     }
 }
