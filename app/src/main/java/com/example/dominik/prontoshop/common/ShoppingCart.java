@@ -4,6 +4,8 @@ import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.example.dominik.prontoshop.core.ProntoShopApplication;
+import com.example.dominik.prontoshop.core.events.CustomerSelectedEvent;
+import com.example.dominik.prontoshop.core.events.UpdateToolbarEvent;
 import com.example.dominik.prontoshop.model.Customer;
 import com.example.dominik.prontoshop.model.LineItem;
 import com.example.dominik.prontoshop.util.Constants;
@@ -63,6 +65,8 @@ public class ShoppingCart implements ShoppingCartContract {
             }
         }
 
+        populateToolbar();
+
     }
 
     public void saveCartToPreferences(){
@@ -107,11 +111,21 @@ public class ShoppingCart implements ShoppingCartContract {
     @Override
     public void removeItemFromCart(LineItem item) {
         shoppingCart.remove(item);
+        if(shoppingCart.size() == 0){
+            bus.post(new CustomerSelectedEvent(new Customer(), true));
+        }
+        populateToolbar();
     }
 
     @Override
     public void clearAllItemsFromCart() {
         shoppingCart.clear();
+        selectedCustomer = null;
+        editor.putString(Constants.SERIALIZED_CART_ITEMS, "").commit();
+        editor.putString(Constants.SERIALIZED_CUSTOMER, "").commit();
+        editor.putBoolean(Constants.OPEN_CART_EXISTS, false).commit();
+        populateToolbar();
+        bus.post(new CustomerSelectedEvent(new Customer(), true));
     }
 
     @Override
@@ -122,6 +136,7 @@ public class ShoppingCart implements ShoppingCartContract {
     @Override
     public void setCustomer(Customer customer) {
         selectedCustomer = customer;
+        bus.post(new CustomerSelectedEvent(customer, false));
     }
 
     @Override
@@ -142,6 +157,7 @@ public class ShoppingCart implements ShoppingCartContract {
             item.setQuantity(qty);
             shoppingCart.add(item);
         }
+        populateToolbar();
     }
 
     @Override
@@ -152,5 +168,11 @@ public class ShoppingCart implements ShoppingCartContract {
     @Override
     public void completeCheckout() {
         shoppingCart.clear();
+        populateToolbar();
+        bus.post(new CustomerSelectedEvent(new Customer(), true));
+    }
+
+    private void populateToolbar(){
+        bus.post(new UpdateToolbarEvent(shoppingCart));
     }
 }
