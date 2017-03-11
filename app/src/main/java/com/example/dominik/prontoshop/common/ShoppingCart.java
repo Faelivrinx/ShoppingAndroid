@@ -130,7 +130,7 @@ public class ShoppingCart implements ShoppingCartContract {
 
     @Override
     public List<LineItem> getShoppingCart() {
-        return null;
+        return shoppingCart;
     }
 
     @Override

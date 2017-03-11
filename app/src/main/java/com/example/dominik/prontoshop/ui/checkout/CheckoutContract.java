@@ -1,5 +1,6 @@
 package com.example.dominik.prontoshop.ui.checkout;
 
+import com.example.dominik.prontoshop.core.listeners.OnDatabaseOperationCompleteListener;
 import com.example.dominik.prontoshop.model.LineItem;
 import com.example.dominik.prontoshop.model.Transaction;
 
@@ -20,7 +21,7 @@ public interface CheckoutContract {
 
         void showCofirmClearCart();
 
-        void showMessage();
+        void showMessage(String message);
 
     }
 
@@ -48,9 +49,9 @@ public interface CheckoutContract {
     public interface Repository {
         List<LineItem> getAllLineItems();
 
-        void saveTransaction(Transaction transaction);
+        void saveTransaction(Transaction transaction, OnDatabaseOperationCompleteListener listener);
 
-        void updateTransaction(Transaction transaction);
+        void updateTransaction(Transaction transaction, OnDatabaseOperationCompleteListener listener);
 
     }
 }
