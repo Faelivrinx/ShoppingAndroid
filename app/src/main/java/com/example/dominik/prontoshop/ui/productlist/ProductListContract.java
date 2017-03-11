@@ -1,6 +1,7 @@
 package com.example.dominik.prontoshop.ui.productlist;
 
 
+import com.example.dominik.prontoshop.core.listeners.OnDatabaseOperationCompleteListener;
 import com.example.dominik.prontoshop.model.Category;
 import com.example.dominik.prontoshop.model.Product;
 
@@ -54,11 +55,11 @@ public interface ProductListContract {
 
         Product getProductById(long id);
 
-        void deleteProduct(Product product);
+        void deleteProduct(Product product, OnDatabaseOperationCompleteListener listener);
 
-        void addProduct(Product product);
+        void addProduct(Product product, OnDatabaseOperationCompleteListener listener);
 
-        void updateProduct(Product product);
+        void updateProduct(Product product, OnDatabaseOperationCompleteListener listener);
 
         List<Category> getAllCategories();
     }
