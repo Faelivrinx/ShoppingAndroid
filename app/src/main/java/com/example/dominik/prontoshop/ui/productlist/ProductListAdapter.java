@@ -35,6 +35,11 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         this.listener = listener;
     }
 
+    public void replaceData(List<Product> products){
+        mProducts = products;
+        notifyDataSetChanged();
+    }
+
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View rootView = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_product, parent, false);
