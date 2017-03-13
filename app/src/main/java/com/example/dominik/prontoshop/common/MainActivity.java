@@ -1,5 +1,6 @@
 package com.example.dominik.prontoshop.common;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -15,9 +16,14 @@ import android.view.MenuItem;
 import android.widget.TableLayout;
 
 import com.example.dominik.prontoshop.R;
+import com.example.dominik.prontoshop.core.ProntoShopApplication;
+import com.example.dominik.prontoshop.data.DatabaseHelper;
 import com.example.dominik.prontoshop.ui.checkout.CheckoutFragment;
 import com.example.dominik.prontoshop.ui.customerlist.CustomerListFragment;
 import com.example.dominik.prontoshop.ui.productlist.ProductListFragment;
+import com.squareup.otto.Bus;
+
+import javax.inject.Inject;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -30,6 +36,9 @@ public class MainActivity extends AppCompatActivity {
     @Bind(R.id.activity_main_tabLayout)
     TabLayout mTabLayout;
 
+    private Bus mBus;
+    @Inject ShoppingCart mCart;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -38,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ButterKnife.bind(this);
+        mBus = ProntoShopApplication.getInstance().getBus();
+
 
         setupViewPager();
 

@@ -28,9 +28,6 @@ public class ShoppingCart implements ShoppingCartContract {
     private static final String LOG_TAG = ShoppingCart.class.getSimpleName();
     private static boolean DEBUG = true;
 
-    @Inject
-    Bus bus;
-
     public ShoppingCart(SharedPreferences sharedPreferences) {
         this.sharedPreferences = sharedPreferences;
         ProntoShopApplication.getInstance().getAppComponent().inject(this);
@@ -112,7 +109,7 @@ public class ShoppingCart implements ShoppingCartContract {
     public void removeItemFromCart(LineItem item) {
         shoppingCart.remove(item);
         if(shoppingCart.size() == 0){
-            bus.post(new CustomerSelectedEvent(new Customer(), true));
+            ProntoShopApplication.getInstance().getBus().post(new CustomerSelectedEvent(new Customer(), true));
         }
         populateToolbar();
     }
@@ -125,7 +122,7 @@ public class ShoppingCart implements ShoppingCartContract {
         editor.putString(Constants.SERIALIZED_CUSTOMER, "").commit();
         editor.putBoolean(Constants.OPEN_CART_EXISTS, false).commit();
         populateToolbar();
-        bus.post(new CustomerSelectedEvent(new Customer(), true));
+        ProntoShopApplication.getInstance().getBus().post(new CustomerSelectedEvent(new Customer(), true));
     }
 
     @Override
@@ -136,7 +133,7 @@ public class ShoppingCart implements ShoppingCartContract {
     @Override
     public void setCustomer(Customer customer) {
         selectedCustomer = customer;
-        bus.post(new CustomerSelectedEvent(customer, false));
+        ProntoShopApplication.getInstance().getBus().post(new CustomerSelectedEvent(customer, false));
     }
 
     @Override
@@ -169,10 +166,10 @@ public class ShoppingCart implements ShoppingCartContract {
     public void completeCheckout() {
         shoppingCart.clear();
         populateToolbar();
-        bus.post(new CustomerSelectedEvent(new Customer(), true));
+        ProntoShopApplication.getInstance().getBus().post(new CustomerSelectedEvent(new Customer(), true));
     }
 
     private void populateToolbar(){
-        bus.post(new UpdateToolbarEvent(shoppingCart));
+        ProntoShopApplication.getInstance().getBus().post(new UpdateToolbarEvent(shoppingCart));
     }
 }
