@@ -7,8 +7,21 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHelper extends SQLiteOpenHelper{
 
-    public DatabaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
+    private final static int DATABASE_VERSION = 1;
+    private final static String DATABASE_NAME = "shop_android.db";
+    private static DatabaseHelper mDatabaseInstance = null;
+
+    public static DatabaseHelper newInstance(Context context){
+        if(mDatabaseInstance == null){
+            mDatabaseInstance = new DatabaseHelper(context.getApplicationContext());
+        }
+
+        return mDatabaseInstance;
+    }
+
+
+    public DatabaseHelper(Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
