@@ -1,23 +1,23 @@
 package com.example.dominik.prontoshop.ui.transaction;
 
 import com.example.dominik.prontoshop.core.listeners.OnDatabaseOperationCompleteListener;
-import com.example.dominik.prontoshop.model.Transaction;
+import com.example.dominik.prontoshop.model.SalesTransaction;
 
 import java.util.List;
 
 public class TempTransaction implements TransactionContract.Repository {
     @Override
-    public List<Transaction> getAllTransactions() {
+    public List<SalesTransaction> getAllTransactions() {
         return null;
     }
 
     @Override
-    public void updateTransaction(Transaction transaction, OnDatabaseOperationCompleteListener listener) {
+    public void updateTransaction(SalesTransaction salesTransaction, OnDatabaseOperationCompleteListener listener) {
 
     }
 
     @Override
-    public Transaction getTransactionById(long id) {
+    public SalesTransaction getTransactionById(long id) {
         return null;
     }
 

@@ -3,7 +3,7 @@ package com.example.dominik.prontoshop.ui.transaction;
 import com.example.dominik.prontoshop.core.ProntoShopApplication;
 import com.example.dominik.prontoshop.core.listeners.OnDatabaseOperationCompleteListener;
 import com.example.dominik.prontoshop.model.Customer;
-import com.example.dominik.prontoshop.model.Transaction;
+import com.example.dominik.prontoshop.model.SalesTransaction;
 import com.example.dominik.prontoshop.ui.customerlist.CustomerListContract;
 
 import java.util.List;
@@ -26,28 +26,28 @@ public class TransactionPresenter implements TransactionContract.Actions, OnData
 
     @Override
     public void loadTransactions() {
-        List<Transaction> transactions = mRepository.getAllTransactions();
-        if (transactions != null & transactions.size() > 0) {
+        List<SalesTransaction> salesTransactions = mRepository.getAllTransactions();
+        if (salesTransactions != null & salesTransactions.size() > 0) {
             mView.hideEmptyText();
-            mView.showTransaction(transactions);
+            mView.showTransaction(salesTransactions);
         } else {
             mView.showEmptyText();
         }
     }
 
     @Override
-    public void onDeleteItemButtonClicked(Transaction transaction) {
-        mView.confirmDeletePrompt(transaction);
+    public void onDeleteItemButtonClicked(SalesTransaction salesTransaction) {
+        mView.confirmDeletePrompt(salesTransaction);
     }
 
     @Override
-    public void deleteTransaction(Transaction transaction) {
-        mRepository.deleteTransaction(transaction.getId(), this);
+    public void deleteTransaction(SalesTransaction salesTransaction) {
+        mRepository.deleteTransaction(salesTransaction.getId(), this);
     }
 
     @Override
-    public void editTransaction(Transaction transaction) {
-        mRepository.updateTransaction(transaction, this);
+    public void editTransaction(SalesTransaction salesTransaction) {
+        mRepository.updateTransaction(salesTransaction, this);
     }
 
     @Override

@@ -3,7 +3,7 @@ package com.example.dominik.prontoshop.ui.checkout;
 import com.example.dominik.prontoshop.common.ShoppingCart;
 import com.example.dominik.prontoshop.core.listeners.OnDatabaseOperationCompleteListener;
 import com.example.dominik.prontoshop.model.LineItem;
-import com.example.dominik.prontoshop.model.Transaction;
+import com.example.dominik.prontoshop.model.SalesTransaction;
 import com.squareup.otto.Bus;
 
 import java.util.List;
@@ -85,15 +85,15 @@ public class CheckoutPresenter implements CheckoutContract.Actions, OnDatabaseOp
             return;
         }
 
-        Transaction transaction = new Transaction();
-        transaction.setCustomerId(mCart.getSelectedCustomer().getId());
-        transaction.setLineItems(mCart.getShoppingCart());
-        transaction.setTaxAmount(tax);
-        transaction.setSubTotalAmount(subTotal);
-        transaction.setTotalAmount(total);
-        transaction.setPaymentType(selectedPaymentType);
-        transaction.setPaid(paid);
-        mRepository.saveTransaction(transaction, this);
+        SalesTransaction salesTransaction = new SalesTransaction();
+        salesTransaction.setCustomerId(mCart.getSelectedCustomer().getId());
+        salesTransaction.setLineItems(mCart.getShoppingCart());
+        salesTransaction.setTaxAmount(tax);
+        salesTransaction.setSubTotalAmount(subTotal);
+        salesTransaction.setTotalAmount(total);
+        salesTransaction.setPaymentType(selectedPaymentType);
+        salesTransaction.setPaid(paid);
+        mRepository.saveTransaction(salesTransaction, this);
     }
 
     @Override

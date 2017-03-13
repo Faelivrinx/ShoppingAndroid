@@ -2,7 +2,7 @@ package com.example.dominik.prontoshop.ui.checkout;
 
 import com.example.dominik.prontoshop.core.listeners.OnDatabaseOperationCompleteListener;
 import com.example.dominik.prontoshop.model.LineItem;
-import com.example.dominik.prontoshop.model.Transaction;
+import com.example.dominik.prontoshop.model.SalesTransaction;
 
 import java.util.List;
 
@@ -49,9 +49,9 @@ public interface CheckoutContract {
     public interface Repository {
         List<LineItem> getAllLineItems();
 
-        void saveTransaction(Transaction transaction, OnDatabaseOperationCompleteListener listener);
+        void saveTransaction(SalesTransaction salesTransaction, OnDatabaseOperationCompleteListener listener);
 
-        void updateTransaction(Transaction transaction, OnDatabaseOperationCompleteListener listener);
+        void updateTransaction(SalesTransaction salesTransaction, OnDatabaseOperationCompleteListener listener);
 
     }
 }

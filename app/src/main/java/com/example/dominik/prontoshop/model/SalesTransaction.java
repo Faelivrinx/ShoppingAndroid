@@ -6,7 +6,7 @@ import com.google.gson.reflect.TypeToken;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Transaction
+public class SalesTransaction
 {
     private long id;
     private long customerId;
@@ -26,7 +26,7 @@ public class Transaction
     private String jsonLineItem;
 
 
-    public Transaction(){}
+    public SalesTransaction(){}
 
     public long getId() {
         return id;
