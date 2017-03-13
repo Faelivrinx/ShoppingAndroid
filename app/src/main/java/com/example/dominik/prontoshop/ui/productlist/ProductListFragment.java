@@ -21,7 +21,7 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
+import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class ProductListFragment extends Fragment implements OnProductSelectedListener, ProductListContract.View {
@@ -30,13 +30,13 @@ public class ProductListFragment extends Fragment implements OnProductSelectedLi
     private ProductListAdapter mAdapter;
     private ProductListContract.Actions mPresenter;
 
-    @BindView(R.id.fragment_product_list_recyclerView)
+    @Bind(R.id.fragment_product_list_recyclerView)
     RecyclerView mRecyclerView;
 
-    @BindView(R.id.fragment_product_list_emptyText)
+    @Bind(R.id.fragment_product_list_emptyText)
     TextView mEmptyText;
 
-    @BindView(R.id.fragment_product_list_floatActionButton)
+    @Bind(R.id.fragment_product_list_floatActionButton)
     FloatingActionButton mFab;
 
 

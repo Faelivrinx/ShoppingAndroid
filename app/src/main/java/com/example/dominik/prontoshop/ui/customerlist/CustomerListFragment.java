@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.dominik.prontoshop.R;
 import com.example.dominik.prontoshop.core.listeners.OnCustomerSelectedListener;
@@ -19,22 +20,23 @@ import com.example.dominik.prontoshop.model.Customer;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
+import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class CustomerListFragment extends Fragment implements OnCustomerSelectedListener {
+public class CustomerListFragment extends Fragment implements OnCustomerSelectedListener, CustomerListContract.View {
 
     private View mRootView;
     private CustomerListAdapter mAdapter;
+    private CustomerListContract.Actions mPresenter;
 
 
-    @BindView(R.id.fragment_customer_list_recyclerView)
+    @Bind(R.id.fragment_customer_list_recyclerView)
     RecyclerView mRecyclerView;
 
-    @BindView(R.id.fragment_customer_list_emptyText)
+    @Bind(R.id.fragment_customer_list_emptyText)
     TextView mEmptyText;
 
-    @BindView(R.id.fragment_customer_list_floatActionButton)
+    @Bind(R.id.fragment_customer_list_floatActionButton)
     FloatingActionButton mFab;
 
 
@@ -51,6 +53,7 @@ public class CustomerListFragment extends Fragment implements OnCustomerSelected
         mRootView = inflater.inflate(R.layout.fragment_customer_list, container, false);
 
         ButterKnife.bind(this, mRootView);
+        mPresenter = new CustomerPresenter(this);
 
         List<Customer> tempCustomers = new ArrayList<>();
         mAdapter = new CustomerListAdapter(tempCustomers, getActivity(), this);
@@ -58,24 +61,14 @@ public class CustomerListFragment extends Fragment implements OnCustomerSelected
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setAdapter(mAdapter);
 
-        if(tempCustomers.size() < 1){
-            showEmptyTextMessage();
-        } else {
-            hideEmptyTextMessage();
-        }
 
         return mRootView;
     }
 
-
-    private void hideEmptyTextMessage() {
-        mEmptyText.setVisibility(View.GONE);
-        mRecyclerView.setVisibility(View.VISIBLE);
-    }
-
-    private void showEmptyTextMessage() {
-        mRecyclerView.setVisibility(View.GONE);
-        mEmptyText.setVisibility(View.VISIBLE);
+    @Override
+    public void onResume() {
+        super.onResume();
+        mPresenter.loadCustomers();
     }
 
     @Override
@@ -87,5 +80,47 @@ public class CustomerListFragment extends Fragment implements OnCustomerSelected
     @Override
     public void onLongClickedCustomer(Customer customer) {
 
+    }
+
+    @Override
+    public void showCustomers(List<Customer> customers) {
+        mAdapter.replaceData(customers);
+    }
+
+    @Override
+    public void showAddCustomerForm() {
+
+    }
+
+    @Override
+    public void showEditCustomerForm(Customer customer) {
+
+    }
+
+    @Override
+    public void showDeleteCustomerPrompt(Customer customer) {
+
+    }
+
+    @Override
+    public void showGoogleSearch(Customer customer) {
+
+    }
+
+    @Override
+    public void showEmptyText() {
+        mRecyclerView.setVisibility(View.GONE);
+        mEmptyText.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideEmptyText() {
+        mEmptyText.setVisibility(View.GONE);
+        mRecyclerView.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void showMessage(String message) {
+        Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
     }
 }

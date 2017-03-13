@@ -8,6 +8,8 @@ import com.example.dominik.prontoshop.ui.customerlist.CustomerInMemoryRepository
 import com.example.dominik.prontoshop.ui.customerlist.CustomerListContract;
 import com.example.dominik.prontoshop.ui.productlist.ProductInMemoryRepository;
 import com.example.dominik.prontoshop.ui.productlist.ProductListContract;
+import com.example.dominik.prontoshop.ui.transaction.TempTransaction;
+import com.example.dominik.prontoshop.ui.transaction.TransactionContract;
 
 import javax.inject.Singleton;
 
@@ -27,5 +29,10 @@ public class PersistenceModule {
     @Singleton
     public CustomerListContract.Repository providesCustomerRepository(Context context) {
         return new CustomerInMemoryRepository();
+    }
+
+    @Provides
+    public TransactionContract.Repository providesTransactionRepository(Context context){
+        return new TempTransaction();
     }
 }

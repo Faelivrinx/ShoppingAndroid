@@ -18,7 +18,7 @@ import com.squareup.picasso.Picasso;
 import java.text.NumberFormat;
 import java.util.List;
 
-import butterknife.BindView;
+import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.ViewHolder> {
@@ -77,22 +77,22 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
 
-        @BindView(R.id.list_product_productName)
+        @Bind(R.id.list_product_productName)
         TextView productName;
 
-        @BindView(R.id.list_product_productCategory)
+        @Bind(R.id.list_product_productCategory)
         TextView productCategory;
 
-        @BindView(R.id.list_product_productPrice)
+        @Bind(R.id.list_product_productPrice)
         TextView productPrice;
 
-        @BindView(R.id.list_product_description)
+        @Bind(R.id.list_product_description)
         TextView productDescription;
 
-        @BindView(R.id.list_product_addCartButton)
+        @Bind(R.id.list_product_addCartButton)
         ImageView addCartButton;
 
-        @BindView(R.id.list_product_image)
+        @Bind(R.id.list_product_image)
         ImageView productImage;
 
 

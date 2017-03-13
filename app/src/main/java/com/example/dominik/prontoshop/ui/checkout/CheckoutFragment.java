@@ -21,7 +21,7 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
+import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
@@ -33,28 +33,28 @@ public class CheckoutFragment extends Fragment implements CartActionsListener {
     private CheckoutAdapter mAdapter;
 
 
-    @BindView(R.id.fragment_checkout_list_recyclerView)
+    @Bind(R.id.fragment_checkout_list_recyclerView)
     RecyclerView mRecyclerView;
 
-    @BindView(R.id.fragment_checkout_buttonCard)
+    @Bind(R.id.fragment_checkout_buttonCard)
     Button mButtonCheckout;
 
-    @BindView(R.id.fragment_checkout_clearButton)
+    @Bind(R.id.fragment_checkout_clearButton)
     Button mButtonClear;
 
-    @BindView(R.id.fragment_checkout_list_emptyText)
+    @Bind(R.id.fragment_checkout_list_emptyText)
     TextView mEmptyText;
 
-    @BindView(R.id.fragment_checkout_list_textView_sub_total)
+    @Bind(R.id.fragment_checkout_list_textView_sub_total)
     TextView mSubTotalTextView;
 
-    @BindView(R.id.fragment_checkout_list_textView_total)
+    @Bind(R.id.fragment_checkout_list_textView_total)
     TextView mTotalTextView;
 
-    @BindView(R.id.fragment_checkout_list_textView_tax)
+    @Bind(R.id.fragment_checkout_list_textView_tax)
     TextView mTotalTaxValue;
 
-    @BindView(R.id.fragment_checkout_radioGroup_payment_type)
+    @Bind(R.id.fragment_checkout_radioGroup_payment_type)
     RadioGroup mRadioGroup;
 
 

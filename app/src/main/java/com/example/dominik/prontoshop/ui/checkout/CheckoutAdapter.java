@@ -23,7 +23,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import butterknife.BindView;
+import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class CheckoutAdapter extends RecyclerView.Adapter<CheckoutAdapter.ViewHolder> {
@@ -71,19 +71,19 @@ public class CheckoutAdapter extends RecyclerView.Adapter<CheckoutAdapter.ViewHo
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        @BindView(R.id.list_shopping_cart_productName)
+        @Bind(R.id.list_shopping_cart_productName)
         TextView productName;
 
-        @BindView(R.id.list_shopping_cart_viewPrice)
+        @Bind(R.id.list_shopping_cart_viewPrice)
         TextView productPrice;
 
-        @BindView(R.id.list_shopping_cart_image)
+        @Bind(R.id.list_shopping_cart_image)
         ImageView productImage;
 
-        @BindView(R.id.list_shopping_cart_input_textQty)
+        @Bind(R.id.list_shopping_cart_input_textQty)
         EditText qtyEditText;
 
-        @BindView(R.id.list_shopping_cart_input_btnDelete)
+        @Bind(R.id.list_shopping_cart_input_btnDelete)
         Button btnDelete;
 
         public ViewHolder(final View itemView) {

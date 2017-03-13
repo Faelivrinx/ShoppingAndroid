@@ -19,20 +19,20 @@ import com.example.dominik.prontoshop.ui.checkout.CheckoutFragment;
 import com.example.dominik.prontoshop.ui.customerlist.CustomerListFragment;
 import com.example.dominik.prontoshop.ui.productlist.ProductListFragment;
 
-import butterknife.BindView;
+import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
-    @BindView(R.id.activity_main_viewPager)
+    @Bind(R.id.activity_main_viewPager)
     ViewPager mViewPager;
 
-    @BindView(R.id.activity_main_tabLayout)
+    @Bind(R.id.activity_main_tabLayout)
     TabLayout mTabLayout;
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
