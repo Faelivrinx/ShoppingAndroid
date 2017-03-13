@@ -4,6 +4,7 @@ import com.example.dominik.prontoshop.common.MainActivity;
 import com.example.dominik.prontoshop.common.ShoppingCart;
 import com.example.dominik.prontoshop.ui.customerlist.CustomerPresenter;
 import com.example.dominik.prontoshop.ui.productlist.ProductPresenter;
+import com.example.dominik.prontoshop.ui.transaction.TransactionPresenter;
 
 import javax.inject.Singleton;
 
@@ -14,7 +15,8 @@ import dagger.Component;
         modules = {
                 AppModule.class,
                 ShoppingCartModule.class,
-                BusModule.class
+                BusModule.class,
+                PersistenceModule.class
         }
 )
 public interface AppComponent {
@@ -22,4 +24,5 @@ public interface AppComponent {
     void inject(ShoppingCart cart);
     void inject(ProductPresenter presenter);
     void inject(CustomerPresenter presenter);
+    void inject(TransactionPresenter presenter);
 }

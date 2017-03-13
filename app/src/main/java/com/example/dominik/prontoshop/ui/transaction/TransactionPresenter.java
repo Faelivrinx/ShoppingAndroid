@@ -20,7 +20,7 @@ public class TransactionPresenter implements TransactionContract.Actions, OnData
 
     public TransactionPresenter(TransactionContract.View mView) {
         this.mView = mView;
-
+        ProntoShopApplication.getInstance().getAppComponent().inject(this);
     }
 
 
