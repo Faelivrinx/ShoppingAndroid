@@ -15,9 +15,12 @@ import android.view.MenuItem;
 import android.widget.TableLayout;
 
 import com.example.dominik.prontoshop.R;
+import com.example.dominik.prontoshop.core.ProntoShopApplication;
 import com.example.dominik.prontoshop.ui.checkout.CheckoutFragment;
 import com.example.dominik.prontoshop.ui.customerlist.CustomerListFragment;
 import com.example.dominik.prontoshop.ui.productlist.ProductListFragment;
+
+import javax.inject.Inject;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -29,6 +32,11 @@ public class MainActivity extends AppCompatActivity {
 
     @Bind(R.id.activity_main_tabLayout)
     TabLayout mTabLayout;
+
+
+
+    @Inject
+    ShoppingCart mCart;
 
 
     @Override
@@ -49,5 +57,20 @@ public class MainActivity extends AppCompatActivity {
         mTabLayout.setupWithViewPager(mViewPager);
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        ProntoShopApplication.getInstance().getAppComponent().inject(this);
+        mCart.saveCartToPreferences();
+    }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        try{
+            ProntoShopApplication.getInstance().getAppComponent().inject(this);
+            mCart.saveCartToPreferences();
+            mB
+        }
+    }
 }
