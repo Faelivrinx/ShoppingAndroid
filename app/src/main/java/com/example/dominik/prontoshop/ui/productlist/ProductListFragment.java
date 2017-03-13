@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.dominik.prontoshop.R;
 import com.example.dominik.prontoshop.core.listeners.OnProductSelectedListener;
@@ -20,22 +21,22 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
+import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class ProductListFragment extends Fragment implements OnProductSelectedListener {
+public class ProductListFragment extends Fragment implements OnProductSelectedListener, ProductListContract.View {
 
     private View mRootView;
     private ProductListAdapter mAdapter;
+    private ProductListContract.Actions mPresenter;
 
-
-    @BindView(R.id.fragment_product_list_recyclerView)
+    @Bind(R.id.fragment_product_list_recyclerView)
     RecyclerView mRecyclerView;
 
-    @BindView(R.id.fragment_product_list_emptyText)
+    @Bind(R.id.fragment_product_list_emptyText)
     TextView mEmptyText;
 
-    @BindView(R.id.fragment_product_list_floatActionButton)
+    @Bind(R.id.fragment_product_list_floatActionButton)
     FloatingActionButton mFab;
 
 
@@ -50,6 +51,7 @@ public class ProductListFragment extends Fragment implements OnProductSelectedLi
         // Inflate the layout for this fragment
         mRootView = inflater.inflate(R.layout.fragment_product_list, container, false);
         ButterKnife.bind(this, mRootView);
+        mPresenter = new ProductPresenter(this);
 
         List<Product> tempProducts = new ArrayList<>();
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
@@ -57,24 +59,15 @@ public class ProductListFragment extends Fragment implements OnProductSelectedLi
         mAdapter = new ProductListAdapter(tempProducts, getActivity(), this);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
-        if(tempProducts.size() < 1){
-            showEmptyTextMessage();
-        } else {
-            hideEmptyTextMessage();
-        }
 
 
         return mRootView;
     }
 
-    private void hideEmptyTextMessage() {
-        mEmptyText.setVisibility(View.GONE);
-        mRecyclerView.setVisibility(View.VISIBLE);
-    }
-
-    private void showEmptyTextMessage() {
-        mRecyclerView.setVisibility(View.GONE);
-        mEmptyText.setVisibility(View.VISIBLE);
+    @Override
+    public void onResume() {
+        super.onResume();
+        mPresenter.loadProducts();
     }
 
     @Override
@@ -85,5 +78,47 @@ public class ProductListFragment extends Fragment implements OnProductSelectedLi
     @Override
     public void onLongClickProduct(Product clickedProduct) {
 
+    }
+
+    @Override
+    public void showProducts(List<Product> products) {
+        mAdapter.replaceData(products);
+    }
+
+    @Override
+    public void showAddProductForm() {
+
+    }
+
+    @Override
+    public void showEditProductForm(Product product) {
+
+    }
+
+    @Override
+    public void showDeleteProductPrompt(Product product) {
+
+    }
+
+    @Override
+    public void showGoogleSearch(Product product) {
+
+    }
+
+    @Override
+    public void showEmptyText() {
+        mRecyclerView.setVisibility(View.GONE);
+        mEmptyText.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideEmptyText() {
+        mEmptyText.setVisibility(View.GONE);
+        mRecyclerView.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void showMessage(String message) {
+        Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
     }
 }

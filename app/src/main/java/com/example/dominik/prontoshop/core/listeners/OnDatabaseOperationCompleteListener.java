@@ -1,6 +1,6 @@
 package com.example.dominik.prontoshop.core.listeners;
 
-public interface OnDatabaseOperationCampleteListener {
-    void OnDatabaseOperationFaild(String error);
+public interface OnDatabaseOperationCompleteListener {
+    void OnDatabaseOperationFailed(String error);
     void OnDatabaseOperationSuccesed(String message);
 }

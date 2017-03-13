@@ -17,7 +17,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import butterknife.BindView;
+import butterknife.Bind;
 import butterknife.ButterKnife;
 
 
@@ -33,6 +33,11 @@ public class CustomerListAdapter extends RecyclerView.Adapter<CustomerListAdapte
         this.mCustomers = mCustomers;
         this.mContext = mContext;
         this.mListener = mListener;
+    }
+
+    public void replaceData(List<Customer> customers){
+        mCustomers = customers;
+        notifyDataSetChanged();
     }
 
 
@@ -76,13 +81,13 @@ public class CustomerListAdapter extends RecyclerView.Adapter<CustomerListAdapte
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
 
-        @BindView(R.id.list_customer_customerName)
+        @Bind(R.id.list_customer_customerName)
         TextView customerName;
 
-        @BindView(R.id.list_customer_customerEmail)
+        @Bind(R.id.list_customer_customerEmail)
         TextView customerEmail;
 
-        @BindView(R.id.list_customer_imageView_head)
+        @Bind(R.id.list_customer_imageView_head)
         ImageView customerHeadShot;
 
         public ViewHolder(View itemView) {
