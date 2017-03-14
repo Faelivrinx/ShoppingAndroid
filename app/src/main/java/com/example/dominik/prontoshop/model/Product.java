@@ -1,10 +1,13 @@
 package com.example.dominik.prontoshop.model;
 
 
+import android.database.Cursor;
+
+import com.example.dominik.prontoshop.util.Constants;
+
 import java.text.NumberFormat;
 
-public class Product
-{
+public class Product {
     private long id;
     private String productName;
     private String description;
@@ -18,10 +21,10 @@ public class Product
     private long dateOfLastTransaction;
 
 
-    public Product(){}
+    public Product() {
+    }
 
-    public Product(Product product)
-    {
+    public Product(Product product) {
         this.id = product.getId();
         this.productName = product.getProductName();
         this.description = product.getDescription();
@@ -33,6 +36,35 @@ public class Product
         this.categoryName = product.getCategoryName();
         this.dateAdded = product.getDateAdded();
         this.dateOfLastTransaction = product.getDateOfLastTransaction();
+    }
+
+    public static Product getProductFromCursor(Cursor cursor) {
+
+        long id = cursor.getLong(cursor.getColumnIndex(Constants.COLUMN_ID));
+        String name = cursor.getString(cursor.getColumnIndex(Constants.COLUMN_NAME));
+        String description = cursor.getString(cursor.getColumnIndex(Constants.COLUMN_DESCRIPTION));
+        String promoMessage = cursor.getString(cursor.getColumnIndex(Constants.COLUMN_PROMO_MESSAGE));
+        double salePrice = cursor.getDouble(cursor.getColumnIndex(Constants.COLUMN_PRICE));
+        double purchasePrice = cursor.getDouble(cursor.getColumnIndex(Constants.COLUMN_PURCHASE_PRICE));
+        String imgPath = cursor.getString(cursor.getColumnIndex(Constants.COLUMN_IMAGE_PATH));
+        long catId = cursor.getLong(cursor.getColumnIndex(Constants.COLUMN_CATEGORY_ID));
+        String catName = cursor.getString(cursor.getColumnIndex(Constants.COLUMN_CATEGORY_NAME));
+        long dateCreated = cursor.getLong(cursor.getColumnIndex(Constants.COLUMN_DATE_CREATED));
+        long dateLastUpdate = cursor.getLong(cursor.getColumnIndex(Constants.COLUMN_LAST_UPDATED));
+
+        Product product = new Product();
+        product.setId(id);
+        product.setDescription(description);
+        product.setPromoMessage(promoMessage);
+        product.setSalePrice(salePrice);
+        product.setPurchasePrice(purchasePrice);
+        product.setImagePath(imgPath);
+        product.setCategoryId(catId);
+        product.setCategoryName(catName);
+        product.setDateAdded(dateCreated);
+        product.setDateOfLastTransaction(dateLastUpdate);
+
+        return product;
     }
 
     public long getId() {
