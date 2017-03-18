@@ -5,6 +5,7 @@ import com.example.dominik.prontoshop.common.ShoppingCart;
 import com.example.dominik.prontoshop.ui.customerlist.CustomerPresenter;
 import com.example.dominik.prontoshop.ui.productlist.ProductPresenter;
 import com.example.dominik.prontoshop.ui.transaction.TransactionPresenter;
+import com.example.dominik.prontoshop.ui.transaction.TransactionSQLiteManager;
 
 import javax.inject.Singleton;
 
@@ -25,4 +26,5 @@ public interface AppComponent {
     void inject(ProductPresenter presenter);
     void inject(CustomerPresenter presenter);
     void inject(TransactionPresenter presenter);
+    void inject(TransactionSQLiteManager manager);
 }

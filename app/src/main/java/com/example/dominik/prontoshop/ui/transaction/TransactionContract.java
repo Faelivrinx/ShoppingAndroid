@@ -3,6 +3,7 @@ package com.example.dominik.prontoshop.ui.transaction;
 
 import com.example.dominik.prontoshop.core.listeners.OnDatabaseOperationCompleteListener;
 import com.example.dominik.prontoshop.model.Customer;
+import com.example.dominik.prontoshop.model.LineItem;
 import com.example.dominik.prontoshop.model.SalesTransaction;
 
 import java.util.List;
@@ -27,8 +28,11 @@ public interface TransactionContract {
 
     public interface Repository {
         List<SalesTransaction>getAllTransactions();
-        void updateTransaction(SalesTransaction salesTransaction, OnDatabaseOperationCompleteListener listener);
         SalesTransaction getTransactionById(long id);
+        List<LineItem> getAllLineItems();
+        void saveTransaction(SalesTransaction salesTransaction, OnDatabaseOperationCompleteListener listener);
+        void updateTransaction(SalesTransaction salesTransaction, OnDatabaseOperationCompleteListener listener);
         void deleteTransaction(long id, OnDatabaseOperationCompleteListener listener);
+
     }
 }

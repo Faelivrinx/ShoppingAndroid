@@ -20,6 +20,7 @@ public class ProntoShopApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        instance.bus = new Bus();
         getAppComponent();
     }
 

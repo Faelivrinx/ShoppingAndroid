@@ -42,6 +42,7 @@ public class CustomerListSQLiteManager implements CustomerListContract.Repositor
                     cursor.moveToNext();
                 }
             }
+            cursor.close();
         }
         return customers;
     }
@@ -58,8 +59,8 @@ public class CustomerListSQLiteManager implements CustomerListContract.Repositor
             } else {
                 customer = null;
             }
+            cursor.close();
         }
-
         return customer;
     }
 
