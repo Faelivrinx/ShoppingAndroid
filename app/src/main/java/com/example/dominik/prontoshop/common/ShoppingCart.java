@@ -30,7 +30,7 @@ public class ShoppingCart implements ShoppingCartContract {
 
     public ShoppingCart(SharedPreferences sharedPreferences) {
         this.sharedPreferences = sharedPreferences;
-        ProntoShopApplication.getInstance().getAppComponent().inject(this);
+        //ProntoShopApplication.getInstance().getAppComponent().inject(this);
         initShoppingCart();
     }
 

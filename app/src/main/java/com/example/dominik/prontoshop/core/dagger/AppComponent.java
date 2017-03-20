@@ -27,4 +27,5 @@ public interface AppComponent {
     void inject(CustomerPresenter presenter);
     void inject(TransactionPresenter presenter);
     void inject(TransactionSQLiteManager manager);
+
 }

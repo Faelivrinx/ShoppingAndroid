@@ -17,7 +17,6 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         if(mDatabaseInstance == null){
             mDatabaseInstance = new DatabaseHelper(context.getApplicationContext());
         }
-
         return mDatabaseInstance;
     }
 
@@ -121,7 +120,4 @@ public class DatabaseHelper extends SQLiteOpenHelper{
                     + Constants.COLUMN_NAME + " TEXT NOT NULL, "
                     + Constants.COLUMN_DATE_CREATED + " BIGINT, "
                     + Constants.COLUMN_LAST_UPDATED + " BIGINT "  + ")";
-
-
-
 }

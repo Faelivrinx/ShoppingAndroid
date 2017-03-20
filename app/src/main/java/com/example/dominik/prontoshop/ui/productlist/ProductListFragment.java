@@ -40,6 +40,8 @@ public class ProductListFragment extends Fragment implements OnProductSelectedLi
     FloatingActionButton mFab;
 
 
+
+
     public ProductListFragment() {
         // Required empty public constructor
     }

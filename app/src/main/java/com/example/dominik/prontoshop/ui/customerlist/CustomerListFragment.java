@@ -60,7 +60,7 @@ public class CustomerListFragment extends Fragment implements OnCustomerSelected
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setAdapter(mAdapter);
-
+        mPresenter.loadCustomers();
 
         return mRootView;
     }

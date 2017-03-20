@@ -56,4 +56,11 @@ public class Constants {
     public static final String COLUMN_PAYMENT_TYPE = "payment_type";
     public static final String COLUMN_PAYMENT_STATUS = "payment_status";
 
+    public static final int CART = 1;
+    public static final int REPORT = 2;
+    public static final int SETTINGS = 3;
+
+    public static final int TRANSACTIONS = 4;
+
+    public static final int PURCHASE = 5;
 }

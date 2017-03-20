@@ -1,10 +1,14 @@
 package com.example.dominik.prontoshop.core;
 
 import android.app.Application;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
 import com.example.dominik.prontoshop.core.dagger.AppComponent;
 import com.example.dominik.prontoshop.core.dagger.AppModule;
 import com.example.dominik.prontoshop.core.dagger.DaggerAppComponent;
+import com.example.dominik.prontoshop.util.Constants;
 import com.squareup.otto.Bus;
 
 /**
@@ -22,6 +26,7 @@ public class ProntoShopApplication extends Application {
         super.onCreate();
         instance.bus = new Bus();
         getAppComponent();
+        initDefaultProducts();
     }
 
     public Bus getBus(){
@@ -40,5 +45,14 @@ public class ProntoShopApplication extends Application {
                     .build();
         }
         return appComponent;
+    }
+    private void initDefaultProducts(){
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        if(sharedPreferences.getBoolean(Constants.FIRST_RUN, true)){
+            startService(new Intent(this, AddInitialDataService.class));
+            editor.putBoolean(Constants.FIRST_RUN, false).commit();
+        }
     }
 }
